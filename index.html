@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Ingeniería Económica</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Herramientas online de Ingeniería Económica para análisis financiero, toma de decisiones de inversión, cálculo de depreciación, análisis de sensibilidad y más.">
+    <meta name="keywords" content="ingeniería económica, análisis financiero, valor presente neto, vpn, depreciación, bonos, sensibilidad, escenarios, calculadoras financieras, herramientas de inversion">
+    <meta name="author" content="fl2on">
+    <meta property="og:title" content="Herramientas de Ingeniería Económica">
+    <meta property="og:description" content="Herramientas online de Ingeniería Económica para análisis financiero, toma de decisiones de inversión y más.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fl2on.github.io/Herramientas-Ing-Eco/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Un2versidad/Herramientas-Ing-Eco/refs/heads/main/favicon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Herramientas de Ingeniería Económica">
+    <meta name="twitter:description" content="Herramientas online de Ingeniería Económica para análisis financiero, toma de decisiones de inversión y más.">
+    <meta name="twitter:url" content="https://fl2on.github.io/Herramientas-Ing-Eco/">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Un2versidad/Herramientas-Ing-Eco/refs/heads/main/favicon.png">
+    <meta name="twitter:creator" content="@nova_qzxtu">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)']
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ]
+        }
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+      <div class="container mx-auto px-4 relative">
+        <div class="flex items-center justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <svg class="w-12 h-12 text-blue-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+              <h1 class="text-4xl font-bold tracking-tight">Herramientas de Ingeniería Económica</h1>
+            </div>
+            <p class="text-xl text-blue-100 max-w-2xl">Análisis financiero avanzado y toma de decisiones para ingenieros</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Barra de navegación -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <!-- Menú Principal (Visible en Pantallas Grandes) -->
+        <div class="hidden md:flex justify-between items-center py-4 gap-6 nav-tabs" role="tablist">
+          <!-- Calculadoras -->
+          <button class="nav-tab active" data-tab="calculadoras" role="tab" aria-label="Calculadoras">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg> Calculadoras </button>
+          <!-- Análisis -->
+          <button class="nav-tab" data-tab="analisis" role="tab" aria-label="Análisis">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg> Análisis </button>
+          <!-- Fórmulas -->
+          <button class="nav-tab" data-tab="formulas" role="tab" aria-label="Fórmulas">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+            </svg> Fórmulas </button>
+          <!-- Comparación -->
+          <button class="nav-tab" data-tab="comparacion" role="tab" aria-label="Comparación">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg> Comparación </button>
+          <!-- Diagramas -->
+          <button class="nav-tab" data-tab="diagramas" role="tab" aria-label="Diagramas">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+            </svg> Diagramas </button>
+          <!-- Bonos -->
+          <button class="nav-tab" data-tab="bonos" role="tab" aria-label="Bonos">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg> Bonos </button>
+          <!-- Interpretación -->
+          <button class="nav-tab" data-tab="interpretacion" role="tab" aria-label="Interpretación">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg> Interpretación </button>
+        </div>
+        <!-- Botón de Hamburguesa (Visible en Pantallas Pequeñas) -->
+        <div class="md:hidden flex justify-between items-center py-4">
+          <button id="menu-toggle" class="text-gray-600 hover:text-gray-900 focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        <!-- Menú Desplegable (Oculto por Defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mt-2">
+          <ul class="divide-y divide-gray-200">
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="calculadoras" aria-label="Calculadoras">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg> Calculadoras </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="analisis" aria-label="Análisis">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg> Análisis </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="formulas" aria-label="Fórmulas">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                </svg> Fórmulas </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="comparacion" aria-label="Comparación">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg> Comparación </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="diagramas" aria-label="Diagramas">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg> Diagramas </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="bonos" aria-label="Bonos">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg> Bonos </button>
+            </li>
+            <li>
+              <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="interpretacion" aria-label="Interpretación">
+                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg> Interpretación </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container mx-auto px-4 py-12">
+      <!-- Sección de Calculadoras -->
+      <section id="calculadoras" class="tab-content space-y-8">
+        <div class="search-container relative mb-8">
+          <input type="text" class="search-input" placeholder="Buscar calculadora...">
+          <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Calculadora de Factores</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="tasa" class="block text-sm font-medium text-gray-700">Tasa de Interés (%)</label>
+                <input type="number" id="tasa" class="form-input" step="0.01" placeholder="Ingrese la tasa de interés">
+              </div>
+              <div>
+                <label for="periodos" class="block text-sm font-medium text-gray-700">Número de Períodos</label>
+                <input type="number" id="periodos" class="form-input" placeholder="Ingrese el número de períodos">
+              </div>
+              <button onclick="calcularFactores()" class="btn-primary w-full" aria-label="Calcular Factores">Calcular Factores</button>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">F/P</div>
+                  <div id="factor-FP" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">P/F</div>
+                  <div id="factor-PF" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">A/F</div>
+                  <div id="factor-AF" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">F/A</div>
+                  <div id="factor-FA" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">A/P</div>
+                  <div id="factor-AP" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">P/A</div>
+                  <div id="factor-PA" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">P/G</div>
+                  <div id="factor-PG" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">A/G</div>
+                  <div id="factor-AG" class="text-xl font-semibold">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Calculadora de Valor Presente</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="vp-vf" class="block text-sm font-medium text-gray-700">Valor Futuro (VF)</label>
+                <input type="number" id="vp-vf" class="form-input" placeholder="Ingrese el valor futuro">
+              </div>
+              <div>
+                <label for="vp-tasa" class="block text-sm font-medium text-gray-700">Tasa de Interés (%)</label>
+                <input type="number" id="vp-tasa" class="form-input" step="0.01" placeholder="Ingrese la tasa de interés">
+              </div>
+              <div>
+                <label for="vp-periodos" class="block text-sm font-medium text-gray-700">Número de Períodos</label>
+                <input type="number" id="vp-periodos" class="form-input" placeholder="Ingrese el número de períodos">
+              </div>
+              <button onclick="calcularValorPresente()" class="btn-primary w-full" aria-label="Calcular Valor Presente">Calcular Valor Presente</button>
+              <div class="grid grid-cols-1 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Valor Presente (VP)</div>
+                  <div id="valor-presente" class="text-xl font-semibold">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Calculadora de Valor Futuro</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="vf-vp" class="block text-sm font-medium text-gray-700">Valor Presente (VP)</label>
+                <input type="number" id="vf-vp" class="form-input" placeholder="Ingrese el valor presente">
+              </div>
+              <div>
+                <label for="vf-tasa" class="block text-sm font-medium text-gray-700">Tasa de Interés (%)</label>
+                <input type="number" id="vf-tasa" class="form-input" step="0.01" placeholder="Ingrese la tasa de interés">
+              </div>
+              <div>
+                <label for="vf-periodos" class="block text-sm font-medium text-gray-700">Número de Períodos</label>
+                <input type="number" id="vf-periodos" class="form-input" placeholder="Ingrese el número de períodos">
+              </div>
+              <button onclick="calcularValorFuturo()" class="btn-primary w-full" aria-label="Calcular Valor Futuro">Calcular Valor Futuro</button>
+              <div class="grid grid-cols-1 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Valor Futuro (VF)</div>
+                  <div id="valor-futuro" class="text-xl font-semibold">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Calculadora de VPN</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="vpn-inversion" class="block text-sm font-medium text-gray-700">Inversión Inicial</label>
+                <input type="number" id="vpn-inversion" class="form-input" placeholder="Ingrese la inversión inicial">
+              </div>
+              <div>
+                <label for="vpn-tasa-descuento" class="block text-sm font-medium text-gray-700">Tasa de Descuento (%)</label>
+                <input type="number" id="vpn-tasa-descuento" class="form-input" step="0.01" placeholder="Ingrese la tasa de descuento">
+              </div>
+              <div>
+                <label for="vpn-flujo-caja" class="block text-sm font-medium text-gray-700">Flujo de Caja Anual</label>
+                <input type="number" id="vpn-flujo-caja" class="form-input" placeholder="Ingrese el flujo de caja anual">
+              </div>
+              <div>
+                <label for="vpn-periodos" class="block text-sm font-medium text-gray-700">Número de Períodos</label>
+                <input type="number" id="vpn-periodos" class="form-input" placeholder="Ingrese el número de períodos">
+              </div>
+              <button onclick="calcularVPN()" class="btn-primary w-full" aria-label="Calcular VPN">Calcular VPN</button>
+              <div class="grid grid-cols-1 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Valor Presente Neto (VPN)</div>
+                  <div id="valor-vpn" class="text-xl font-semibold">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección: Análisis -->
+      <section id="analisis" class="tab-content hidden space-y-8">
+        <div class="search-container relative mb-8">
+          <input type="text" class="search-input" placeholder="Buscar análisis...">
+          <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <h3 class="text-xl font-semibold">Análisis de Reemplazo</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="newAssetCost" class="block text-sm font-medium text-gray-700">Costo del Activo Nuevo</label>
+                <input type="number" id="newAssetCost" class="form-input" placeholder="Ingrese el costo del activo nuevo">
+              </div>
+              <div>
+                <label for="currentMarketValue" class="block text-sm font-medium text-gray-700">Valor de Mercado Actual</label>
+                <input type="number" id="currentMarketValue" class="form-input" placeholder="Ingrese el valor de mercado actual">
+              </div>
+              <div>
+                <label for="currentOM" class="block text-sm font-medium text-gray-700">Costos O&M Actuales (Anual)</label>
+                <input type="number" id="currentOM" class="form-input" placeholder="Ingrese los costos O&M actuales">
+              </div>
+              <div>
+                <label for="newOM" class="block text-sm font-medium text-gray-700">Costos O&M Nuevos (Anual)</label>
+                <input type="number" id="newOM" class="form-input" placeholder="Ingrese los costos O&M nuevos">
+              </div>
+              <div>
+                <label for="replacementRate" class="block text-sm font-medium text-gray-700">Tasa de Interés (%)</label>
+                <input type="number" id="replacementRate" class="form-input" step="0.01" placeholder="Ingrese la tasa de interés">
+              </div>
+              <button onclick="calcularReemplazo()" class="btn-primary w-full" aria-label="Analizar Reemplazo">Analizar Reemplazo</button>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-sm text-gray-600">Decisión de Reemplazo</div>
+                <div id="replacementDecision" class="text-xl font-semibold">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+              </svg>
+              <h3 class="text-xl font-semibold">Análisis de Depreciación</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="depCost" class="block text-sm font-medium text-gray-700">Costo Inicial</label>
+                  <input type="number" id="depCost" class="form-input" placeholder="Ingrese el costo inicial">
+                </div>
+                <div>
+                  <label for="depSalvage" class="block text-sm font-medium text-gray-700">Valor de Salvamento</label>
+                  <input type="number" id="depSalvage" class="form-input" placeholder="Ingrese el valor de salvamento">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="depLife" class="block text-sm font-medium text-gray-700">Vida Útil (años)</label>
+                  <input type="number" id="depLife" class="form-input" placeholder="Ingrese la vida útil">
+                </div>
+                <div>
+                  <label for="depMethod" class="block text-sm font-medium text-gray-700">Método</label>
+                  <select id="depMethod" class="form-input" aria-label="Método de Depreciación">
+                    <option value="sl">Línea Recta</option>
+                    <option value="db">Saldo Decreciente</option>
+                    <option value="syd">Suma de Años Dígitos</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="calcularDepreciacion()" class="btn-primary w-full" aria-label="Calcular Depreciación">Calcular Depreciación</button>
+              <div id="depreciationTable" class="overflow-x-auto bg-gray-50 rounded-lg p-4">
+                <table class="min-w-full">
+                  <thead>
+                    <tr>
+                      <th>Año</th>
+                      <th>Depreciación</th>
+                      <th>Valor en Libros</th>
+                    </tr>
+                  </thead>
+                  <tbody id="depTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Análisis de Sensibilidad VPN</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="sensInitialInv" class="block text-sm font-medium text-gray-700">Inversión Inicial</label>
+                <input type="number" id="sensInitialInv" class="form-input" placeholder="Ingrese la inversión inicial">
+              </div>
+              <div>
+                <label for="sensBaseFlow" class="block text-sm font-medium text-gray-700">Flujo Anual Base</label>
+                <input type="number" id="sensBaseFlow" class="form-input" placeholder="Ingrese el flujo anual base">
+              </div>
+              <div>
+                <label for="sensBaseRate" class="block text-sm font-medium text-gray-700">Tasa Base (%)</label>
+                <input type="number" id="sensBaseRate" class="form-input" step="0.01" placeholder="Ingrese la tasa base">
+              </div>
+              <div>
+                <label for="sensVariation" class="block text-sm font-medium text-gray-700">Variación (%)</label>
+                <input type="number" id="sensVariation" class="form-input" step="1" placeholder="Ingrese la variación">
+              </div>
+              <button onclick="analizarSensibilidad()" class="btn-primary w-full" aria-label="Analizar Sensibilidad">Analizar Sensibilidad</button>
+              <div class="h-80">
+                <canvas id="sensitivityChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 calculator-card">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Análisis de Escenarios</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <label for="scenarioType" class="block text-sm font-medium text-gray-700">Escenario</label>
+                  <select id="scenarioType" class="form-input" aria-label="Tipo de Escenario">
+                    <option value="optimista">Optimista</option>
+                    <option value="mas-probable">Más Probable</option>
+                    <option value="pesimista">Pesimista</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="scenarioProb" class="block text-sm font-medium text-gray-700">Probabilidad (%)</label>
+                  <input type="number" id="scenarioProb" class="form-input" step="1" placeholder="Ingrese la probabilidad">
+                </div>
+                <div>
+                  <label for="scenarioNPV" class="block text-sm font-medium text-gray-700">VPN Esperado</label>
+                  <input type="number" id="scenarioNPV" class="form-input" placeholder="Ingrese el VPN esperado">
+                </div>
+              </div>
+              <button onclick="agregarEscenario()" class="btn-secondary w-full" aria-label="Agregar Escenario">Agregar Escenario</button>
+              <button onclick="calcularEscenarios()" class="btn-primary w-full" aria-label="Calcular Resultados">Calcular Resultados</button>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <table class="min-w-full">
+                  <thead>
+                    <tr>
+                      <th>Escenario</th>
+                      <th>Probabilidad</th>
+                      <th>VPN</th>
+                      <th>VPN Ponderado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="scenariosTable"></tbody>
+                </table>
+                <div class="mt-4 pt-4 border-t">
+                  <div class="flex justify-between">
+                    <span class="font-semibold">VPN Esperado:</span>
+                    <span id="expectedNPV" class="font-semibold">-</span>
+                  </div>
+                  <div class="flex justify-between mt-2">
+                    <span class="font-semibold">Desviación Estándar:</span>
+                    <span id="npvStdDev" class="font-semibold">-</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección de Fórmulas -->
+      <section id="formulas" class="tab-content hidden space-y-8">
+        <div class="search-container relative mb-8">
+          <input type="text" class="search-input" placeholder="Buscar fórmulas...">
+          <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Valor Presente (P) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-coins mr-2 text-xl"></i> Valor Presente (P)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Despeje desde F:</p> \[ P = \frac{F}{(1 + i)^n} \] <p class="mb-4">Despeje desde A:</p> \[ P = A \cdot \frac{(1 + i)^n - 1}{i(1 + i)^n} \] <p class="mb-4">Despeje desde G:</p> \[ P = G \cdot \frac{(1 + i)^n - i \cdot n - 1}{i^2(1 + i)^n} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>P = Valor presente</li>
+                <li>F = Valor futuro</li>
+                <li>A = Anualidad</li>
+                <li>G = Gradiente</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Valor Futuro (F) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-chart-line mr-2 text-xl"></i> Valor Futuro (F)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Despeje desde P:</p> \[ F = P(1 + i)^n \] <p class="mb-4">Despeje desde A:</p> \[ F = A \cdot \frac{(1 + i)^n - 1}{i} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>F = Valor futuro</li>
+                <li>P = Valor presente</li>
+                <li>A = Anualidad</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Anualidad (A) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-calendar-alt mr-2 text-xl"></i> Anualidad (A)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Despeje desde P:</p> \[ A = P \cdot \frac{i(1 + i)^n}{(1 + i)^n - 1} \] <p class="mb-4">Despeje desde F:</p> \[ A = F \cdot \frac{i}{(1 + i)^n - 1} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>A = Anualidad</li>
+                <li>P = Valor presente</li>
+                <li>F = Valor futuro</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Gradiente (G) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-arrow-trend-up mr-2 text-xl"></i> Gradiente (G)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Despeje desde P:</p> \[ G = P \cdot \frac{i^2(1 + i)^n}{(1 + i)^n - i \cdot n - 1} \] <p class="mb-4">Relación con A:</p> \[ A_G = G \cdot \left(\frac{1}{i} - \frac{n}{(1 + i)^n - 1}\right) \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>G = Gradiente</li>
+                <li>P = Valor presente</li>
+                <li>A_G = Anualidad equivalente al gradiente</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Valor de Bonos -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-hand-holding-usd mr-2 text-xl"></i> Valor de Bonos
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Valor Presente del Bono:</p> \[ V_B = C \cdot \sum_{t=1}^n \frac{1}{(1 + r)^t} + \frac{M}{(1 + r)^n} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>V_B = Valor presente del bono</li>
+                <li>C = Pago del cupón</li>
+                <li>r = Tasa de mercado</li>
+                <li>M = Valor nominal</li>
+                <li>n = Número de períodos hasta el vencimiento</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Depreciación -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-calculator mr-2 text-xl"></i> Depreciación
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Línea Recta:</p> \[ D_{LR} = \frac{P - S}{n} \] <p class="mb-4">Suma de Años Dígitos:</p> \[ D_{SAD} = \frac{n - (t - 1)}{\frac{n(n + 1)}{2}} \cdot (P - S) \] <p class="mb-4">Saldo Decreciente:</p> \[ D_{SD} = VL_t \cdot \frac{2}{n} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>D_LR = Depreciación por línea recta</li>
+                <li>D_SAD = Depreciación por suma de años dígitos</li>
+                <li>D_SD = Depreciación por saldo decreciente</li>
+                <li>P = Costo inicial</li>
+                <li>S = Valor de salvamento</li>
+                <li>n = Vida útil</li>
+                <li>t = Año actual</li>
+                <li>VL_t = Valor en libros en el año t</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Tasa Interna de Retorno (TIR) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-percentage mr-2 text-xl"></i> Tasa Interna de Retorno (TIR)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Ecuación:</p> \[ 0 = \sum_{t=0}^n \frac{CF_t}{(1 + TIR)^t} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>CF_t = Flujo de caja en el período t</li>
+                <li>TIR = Tasa interna de retorno</li>
+                <li>t = Período</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Valor Actual Neto (VAN) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-dollar-sign mr-2 text-xl"></i> Valor Actual Neto (VAN)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ VAN = \sum_{t=0}^n \frac{CF_t}{(1 + i)^t} - I_0 \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>VAN = Valor actual neto</li>
+                <li>CF_t = Flujo de caja en el período t</li>
+                <li>i = Tasa de descuento</li>
+                <li>I_0 = Inversión inicial</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Relación Beneficio-Costo (B/C) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-balance-scale mr-2 text-xl"></i> Relación Beneficio-Costo (B/C)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ B/C = \frac{\text{Beneficios presentes}}{\text{Costos presentes}} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>B/C = Relación beneficio-costo</li>
+                <li>Beneficios presentes = Valor presente de los beneficios</li>
+                <li>Costos presentes = Valor presente de los costos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Periodo de Recuperación (PR) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-stopwatch mr-2 text-xl"></i> Periodo de Recuperación (PR)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ PR = t + \frac{\text{Inversión pendiente al inicio del período } t}{\text{Flujo de caja en el período } t} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>PR = Periodo de recuperación</li>
+                <li>t = Año actual</li>
+                <li>Inversión pendiente = Saldo no recuperado</li>
+                <li>Flujo de caja = Ingresos netos en el período t</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección: Comparación de Alternativas -->
+      <section id="comparacion" class="tab-content hidden space-y-8">
+        <div class="search-container relative mb-8">
+          <input type="text" class="search-input" placeholder="Buscar comparaciones...">
+          <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Comparación de Alternativas Mutuamente Excluyentes -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              <h3 class="text-xl font-semibold">Alternativas Mutuamente Excluyentes</h3>
+            </div>
+            <div class="space-y-4">
+              <div id="alternativas" class="space-y-4">
+                <div class="alternativa bg-gray-50 p-4 rounded-lg">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label for="alt-inversion" class="block text-sm font-medium text-gray-700">Inversión Inicial</label>
+                      <input type="number" class="form-input alt-inversion" placeholder="Ingrese la inversión inicial">
+                    </div>
+                    <div>
+                      <label for="alt-flujo" class="block text-sm font-medium text-gray-700">Flujo Anual</label>
+                      <input type="number" class="form-input alt-flujo" placeholder="Ingrese el flujo anual">
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div>
+                      <label for="alt-vida" class="block text-sm font-medium text-gray-700">Vida Útil</label>
+                      <input type="number" class="form-input alt-vida" placeholder="Ingrese la vida útil">
+                    </div>
+                    <div>
+                      <label for="alt-salvamento" class="block text-sm font-medium text-gray-700">Valor de Salvamento</label>
+                      <input type="number" class="form-input alt-salvamento" placeholder="Ingrese el valor de salvamento">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button onclick="agregarAlternativa()" class="btn-secondary w-full" aria-label="Agregar Alternativa">Agregar Alternativa</button>
+              <div>
+                <label for="tmar" class="block text-sm font-medium text-gray-700">TMAR (%)</label>
+                <input type="number" id="tmar" class="form-input" step="0.01" placeholder="Ingrese la TMAR">
+              </div>
+              <button onclick="compararAlternativas()" class="btn-primary w-full" aria-label="Comparar Alternativas">Comparar Alternativas</button>
+              <div id="resultadosComparacion" class="bg-gray-50 p-4 rounded-lg">
+                <table class="min-w-full">
+                  <thead>
+                    <tr>
+                      <th>Alternativa</th>
+                      <th>VPN</th>
+                      <th>TIR</th>
+                      <th>B/C</th>
+                    </tr>
+                  </thead>
+                  <tbody id="comparacionTable"></tbody>
+                </table>
+                <div class="mt-4 pt-4 border-t">
+                  <p id="mejorAlternativa" class="font-semibold text-primary"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Análisis Incremental -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Análisis Incremental</h3>
+            </div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="deltaInversion" class="block text-sm font-medium text-gray-700">∆Inversión</label>
+                  <input type="number" id="deltaInversion" class="form-input" placeholder="Ingrese la inversión incremental">
+                </div>
+                <div>
+                  <label for="deltaBeneficios" class="block text-sm font-medium text-gray-700">∆Beneficios Anuales</label>
+                  <input type="number" id="deltaBeneficios" class="form-input" placeholder="Ingrese los beneficios incrementales">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="tmarIncremental" class="block text-sm font-medium text-gray-700">TMAR (%)</label>
+                  <input type="number" id="tmarIncremental" class="form-input" step="0.01" placeholder="Ingrese la TMAR incremental">
+                </div>
+                <div>
+                  <label for="vidaIncremental" class="block text-sm font-medium text-gray-700">Vida del Proyecto</label>
+                  <input type="number" id="vidaIncremental" class="form-input" placeholder="Ingrese la vida del proyecto">
+                </div>
+              </div>
+              <button onclick="analisisIncremental()" class="btn-primary w-full" aria-label="Realizar Análisis">Realizar Análisis</button>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-sm text-gray-600">TIR Incremental</p>
+                    <p id="tirIncremental" class="text-xl font-semibold">-</p>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600">VPN Incremental</p>
+                    <p id="vpnIncremental" class="text-xl font-semibold">-</p>
+                  </div>
+                </div>
+                <div class="mt-4 pt-4 border-t">
+                  <p id="decisionIncremental" class="font-semibold text-primary"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección de Diagramas -->
+      <section id="diagramas" class="tab-content hidden space-y-8">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-xl font-semibold mb-4 flex items-center">
+            <svg class="w-8 h-8 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+            </svg> Diagrama de Flujo de Efectivo
+          </h3>
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="period" class="block text-sm font-medium text-gray-700">Período</label>
+                <input type="number" id="period" class="form-input" placeholder="Ingrese el período">
+              </div>
+              <div>
+                <label for="amount" class="block text-sm font-medium text-gray-700">Monto</label>
+                <input type="number" id="amount" class="form-input" placeholder="Ingrese el monto">
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <button onclick="addCashFlow()" class="btn-primary flex-1" aria-label="Agregar Flujo">Agregar Flujo</button>
+              <button onclick="clearAllCashFlows()" class="btn-secondary flex-1" aria-label="Limpiar Todo">Limpiar Todo</button>
+            </div>
+            <canvas id="cashFlowCanvas" width="800" height="300" class="w-full bg-white rounded-lg shadow-sm"></canvas>
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr>
+                    <th>Período</th>
+                    <th>Monto</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="cashFlowTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Nueva Sección: Bonos -->
+      <section id="bonos" class="tab-content hidden space-y-8">
+        <div class="grid grid-cols-1 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Calculadora de Valor de Bonos</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <label for="bondFaceValue" class="block text-sm font-medium text-gray-700">Valor Nominal</label>
+                <input type="number" id="bondFaceValue" class="form-input" placeholder="Ingrese el valor nominal">
+              </div>
+              <div>
+                <label for="bondCouponRate" class="block text-sm font-medium text-gray-700">Tasa Cupón (%)</label>
+                <input type="number" id="bondCouponRate" class="form-input" step="0.01" placeholder="Ingrese la tasa de cupón">
+              </div>
+              <div>
+                <label for="bondMarketRate" class="block text-sm font-medium text-gray-700">Tasa de Mercado (%)</label>
+                <input type="number" id="bondMarketRate" class="form-input" step="0.01" placeholder="Ingrese la tasa de mercado">
+              </div>
+              <div>
+                <label for="bondYears" class="block text-sm font-medium text-gray-700">Años hasta Vencimiento</label>
+                <input type="number" id="bondYears" class="form-input" placeholder="Ingrese los años hasta vencimiento">
+              </div>
+              <div>
+                <label for="bondPaymentFreq" class="block text-sm font-medium text-gray-700">Frecuencia de Pago</label>
+                <select id="bondPaymentFreq" class="form-input" aria-label="Frecuencia de Pago">
+                  <option value="1">Anual</option>
+                  <option value="2">Semestral</option>
+                  <option value="4">Trimestral</option>
+                  <option value="12">Mensual</option>
+                </select>
+              </div>
+              <button onclick="calcularBono()" class="btn-primary w-full" aria-label="Calcular Valor del Bono">Calcular Valor del Bono</button>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Valor Presente</div>
+                  <div id="bondPV" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Prima/Descuento</div>
+                  <div id="bondPremium" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Duración</div>
+                  <div id="bondDuration" class="text-xl font-semibold">-</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <div class="text-sm text-gray-600">Convexidad</div>
+                  <div id="bondConvexity" class="text-xl font-semibold">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <h3 class="text-xl font-semibold">Tabla de Amortización</h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead>
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Período</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Saldo Inicial</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interés</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amortización</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pago Total</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Saldo Final</th>
+                  </tr>
+                </thead>
+                <tbody id="bondAmortizationTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sección de Interpretación -->
+      <section id="interpretacion" class="tab-content hidden space-y-8">
+        <!-- Símbolos y Notación en Ingeniería Económica -->
+        <section class="bg-white p-10 rounded-xl shadow-xl">
+          <h2 class="text-3xl font-semibold mb-8 text-blue-900 text-center">Símbolos y Notación en Ingeniería Económica</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Valores Monetarios -->
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-blue-800 mb-4">Valores Monetarios</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">P</span>
+                  <div>
+                    <p class="font-semibold">Valor Presente</p>
+                    <p class="text-sm text-gray-600">Cantidad de dinero en el momento actual (t=0)</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">F</span>
+                  <div>
+                    <p class="font-semibold">Valor Futuro</p>
+                    <p class="text-sm text-gray-600">Cantidad de dinero en un momento futuro (t=n)</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">A</span>
+                  <div>
+                    <p class="font-semibold">Anualidad</p>
+                    <p class="text-sm text-gray-600">Pagos o ingresos periódicos uniformes</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Variables Temporales -->
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-blue-800 mb-4">Variables Temporales</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">n</span>
+                  <div>
+                    <p class="font-semibold">Número de Períodos</p>
+                    <p class="text-sm text-gray-600">Duración total en períodos uniformes</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">t</span>
+                  <div>
+                    <p class="font-semibold">Período Actual</p>
+                    <p class="text-sm text-gray-600">Momento específico en la línea de tiempo</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">m</span>
+                  <div>
+                    <p class="font-semibold">Frecuencia de Capitalización</p>
+                    <p class="text-sm text-gray-600">Número de períodos por año</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Tasas y Gradientes -->
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-blue-800 mb-4">Tasas y Gradientes</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">i</span>
+                  <div>
+                    <p class="font-semibold">Tasa de Interés</p>
+                    <p class="text-sm text-gray-600">Tasa de interés por período</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">r</span>
+                  <div>
+                    <p class="font-semibold">Tasa Nominal</p>
+                    <p class="text-sm text-gray-600">Tasa anual sin capitalización</p>
+                  </div>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="text-2xl font-bold text-blue-600">G</span>
+                  <div>
+                    <p class="font-semibold">Gradiente</p>
+                    <p class="text-sm text-gray-600">Incremento aritmético constante</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <!-- Interpretación de Factores -->
+        <section class="bg-white p-8 rounded-xl shadow-xl">
+          <h2 class="text-3xl font-semibold text-center mb-8">Interpretación de Factores</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <!-- Factores de Valor Presente -->
+              <div class="p-4 bg-blue-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-blue-800 mb-2">Factores de Valor Presente</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-blue-600">P/F</span>
+                    <span>Convierte un valor futuro en su equivalente presente</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-blue-600">P/A</span>
+                    <span>Convierte una serie uniforme en valor presente</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-blue-600">P/G</span>
+                    <span>Convierte un gradiente en valor presente</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- Factores de Valor Futuro -->
+              <div class="p-4 bg-green-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-green-800 mb-2">Factores de Valor Futuro</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-green-600">F/P</span>
+                    <span>Proyecta un valor presente a futuro</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-green-600">F/A</span>
+                    <span>Acumula una serie uniforme en valor futuro</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <!-- Factores de Recuperación -->
+              <div class="p-4 bg-purple-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-purple-800 mb-2">Factores de Recuperación</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-purple-600">A/P</span>
+                    <span>Distribuye un valor presente en pagos uniformes</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-purple-600">A/F</span>
+                    <span>Determina pagos uniformes para alcanzar un valor futuro</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- Factores de Gradiente -->
+              <div class="p-4 bg-orange-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-orange-800 mb-2">Factores de Gradiente</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start space-x-2">
+                    <span class="font-mono text-orange-600">A/G</span>
+                    <span>Convierte un gradiente en una serie uniforme equivalente</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white rounded-3xl shadow-xl p-8 space-y-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4"> Diagramas de Flujo de Efectivo </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto"> Visualización de movimientos financieros a lo largo del tiempo </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <h3 class="text-2xl font-semibold text-gray-900"> Elementos Clave </h3>
+              <ul class="space-y-4">
+                <li class="flex items-center space-x-4">
+                  <span class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg font-mono">—</span>
+                  <span class="text-gray-700">Línea horizontal representa el tiempo</span>
+                </li>
+                <li class="flex items-center space-x-4">
+                  <span class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg font-mono">↑</span>
+                  <span class="text-gray-700">Flecha hacia arriba indica ingresos</span>
+                </li>
+                <li class="flex items-center space-x-4">
+                  <span class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg font-mono">↓</span>
+                  <span class="text-gray-700">Flecha hacia abajo indica egresos</span>
+                </li>
+                <li class="flex items-center space-x-4">
+                  <span class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg font-mono">0</span>
+                  <span class="text-gray-700">Período inicial (tiempo presente)</span>
+                </li>
+                <li class="flex items-center space-x-4">
+                  <span class="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg font-mono">n</span>
+                  <span class="text-gray-700">Último período (tiempo futuro)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="space-y-6">
+              <h3 class="text-2xl font-semibold text-gray-900"> Ejemplo de Diagrama </h3>
+              <div class="bg-gray-50 p-6 rounded-xl">
+                <div class="relative h-40">
+                  <div class="absolute w-full h-0.5 bg-gray-300 top-1/2"></div>
+                  <div class="absolute flex flex-col items-center" style="left: 0%">
+                    <div class="h-4 w-0.5 bg-gray-300"></div>
+                    <div class="text-sm text-gray-600 mt-2">n=0</div>
+                    <svg class="w-6 h-6 text-red-500 mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="absolute flex flex-col items-center" style="left: 30%">
+                    <div class="h-4 w-0.5 bg-gray-300"></div>
+                    <div class="text-sm text-gray-600 mt-2">n=1</div>
+                    <svg class="w-6 h-6 text-green-500 mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="19" x2="12" y2="5"></line>
+                      <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="absolute flex flex-col items-center" style="left: 60%">
+                    <div class="h-4 w-0.5 bg-gray-300"></div>
+                    <div class="text-sm text-gray-600 mt-2">n=2</div>
+                    <svg class="w-6 h-6 text-green-500 mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="19" x2="12" y2="5"></line>
+                      <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="absolute flex flex-col items-center" style="left: 90%">
+                    <div class="h-4 w-0.5 bg-gray-300"></div>
+                    <div class="text-sm text-gray-600 mt-2">n=3</div>
+                    <svg class="w-6 h-6 text-green-500 mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="19" x2="12" y2="5"></line>
+                      <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-gray-300 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-white mb-4">Ingeniería Económica</h3>
+            <p class="text-gray-400">Herramientas avanzadas para análisis financiero y toma de decisiones</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-white mb-4">Enlaces</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://www.fao.org/4/v8490s/v8490s02.htm" class="hover:text-white transition-colors">Documentación</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Recursos</a>
+              </li>
+              <li>
+                <a href="https://lisandroingmec.wordpress.com/ingenieria-economica/" class="hover:text-white transition-colors">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-white mb-4">Síguenos</h3>
+            <div class="flex space-x-4">
+              <a href="https://github.com/fl2on" class="hover:text-white transition-colors" aria-label="Github">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+              <a href="https://x.com/nova_qzxtu" class="hover:text-white transition-colors" aria-label="Twitter">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2024 Herramientas de Ingeniería Económica. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Manejo de pestañas
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remover clase active de todas las pestañas
+          document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+          // Agregar clase active a la pestaña seleccionada
+          tab.classList.add('active');
+          // Ocultar todos los contenidos
+          document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+          // Mostrar el contenido seleccionado
+          document.getElementById(tab.dataset.tab).classList.remove('hidden');
+        });
+      });
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>

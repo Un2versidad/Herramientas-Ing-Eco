@@ -5,9 +5,6 @@
 [![Status: Desarrollo en Progreso](https://img.shields.io/badge/Status-Desarrollo%20en%20Progreso-orange)](/)
 [![Tecnologías: Tailwind CSS & JavaScript](https://img.shields.io/badge/Tech-Tailwind%20CSS%20%26%20JavaScript-blue)](/)
 [![Licencia: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue)](/LICENSE)
-[![Contribuciones bienvenidas](https://img.shields.io/badge/Contribuciones-Bienvenidas-brightgreen)](/CONTRIBUTING.md)
-[![Código de Conducta](https://img.shields.io/badge/Código%20de%20Conducta-Comunidad-yellow)](/CODE_OF_CONDUCT.md)
-[![Soporte: Preguntas](https://img.shields.io/badge/Soporte-Preguntas-lightgrey)](https://stackoverflow.com/questions/ask) 
 
 **Calculadoras y Herramientas de Análisis Financiero** es una plataforma web integral diseñada para potenciar tus habilidades en **ingeniería económica y finanzas**. Te ofrecemos un **conjunto amplio y robusto de herramientas** para realizar cálculos y análisis financieros de manera **intuitiva, eficiente y precisa**.
 

@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/cdc034e5-f0fb-48ec-a5d0-966d31cdcf6f)
+
 # ✨ Herramientas de Ingeniería Económica ✨
 
 [![Status: Desarrollo en Progreso](https://img.shields.io/badge/Status-Desarrollo%20en%20Progreso-orange)](/)

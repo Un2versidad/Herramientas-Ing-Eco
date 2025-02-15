@@ -17,12 +17,48 @@ let cashFlows = [{
     amount: 40000
 }];
 
+// Desactivar el desplazamiento predeterminado
 document.body.style.overflow = 'hidden';
+
+// Variables para el seguimiento del desplazamiento táctil
+let startY = 0;
+let currentY = 0;
+let isScrolling = false;
+
+// Manejar el desplazamiento con la rueda del mouse (escritorio)
 document.body.addEventListener('wheel', (event) => {
+    event.preventDefault(); // Prevenir el desplazamiento predeterminado
     window.scrollBy({
         top: event.deltaY,
         behavior: 'smooth'
     });
+}, { passive: false });
+
+// Manejar el desplazamiento táctil (móvil)
+document.body.addEventListener('touchstart', (event) => {
+    if (event.touches.length === 1) {
+        startY = event.touches[0].clientY; // Guardar la posición inicial del toque
+        isScrolling = true;
+    }
+});
+
+document.body.addEventListener('touchmove', (event) => {
+    if (!isScrolling || event.touches.length !== 1) return;
+
+    event.preventDefault(); // Prevenir el desplazamiento predeterminado
+    currentY = event.touches[0].clientY; // Obtener la posición actual del toque
+    const deltaY = currentY - startY; // Calcular la diferencia de desplazamiento
+
+    window.scrollBy({
+        top: -deltaY, // Desplazar en la dirección opuesta al movimiento táctil
+        behavior: 'smooth'
+    });
+
+    startY = currentY; // Actualizar la posición inicial para el próximo cálculo
+}, { passive: false });
+
+document.body.addEventListener('touchend', () => {
+    isScrolling = false; // Finalizar el seguimiento del desplazamiento táctil
 });
 
 // Inicialización cuando el DOM está listo

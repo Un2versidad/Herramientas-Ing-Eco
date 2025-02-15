@@ -79,83 +79,78 @@ body {
 	}
 }
 
-/* Normalize.css (AÑADIDO AL INICIO PARA NORMALIZAR ESTILOS ENTRE NAVEGADORES) */
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit]::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{padding:1px 2px}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 
 @media (max-width: 768px) and (orientation: landscape) {
   body {
     width: 100% !important;
     overflow-x: auto;
-    box-sizing: border-box !important; /* Añadido box-sizing al body */
+    box-sizing: border-box !important;
   }
 
   html, body {
     width: 100% !important;
-    box-sizing: border-box !important; /* Añadido box-sizing al html y body */
+    box-sizing: border-box !important;
   }
 
-  /*  Estilos para CONTENEDORES PRINCIPALES (SIMPLIFICADOS Y REFORZADOS) */
-  .container, /* Estilo general para contenedores .container (si lo usas en tu layout principal) */
-  .grid,        /* Estilo para contenedores .grid (si tu layout principal usa grid) */
-  .calculator-card, /* Estilo para las tarjetas de calculadoras */
-  .formula-card,    /* Estilo para las tarjetas de fórmulas */
-  .result-card,     /* Estilo para las tarjetas de resultados */
-  .search-container, /* Estilo para el contenedor de búsqueda */
-  .nav-tabs,        /* Estilo para las pestañas de navegación */
-  table,             /* Estilo para tablas */
-  #cashFlowCanvas,    /* Estilo para el canvas de flujo de caja */
-  nav.bg-white.shadow-md.sticky.top-0.z-50, /* Estilo para la barra de navegación <nav> */
-  footer /* Estilo para el pie de página <footer> */
-   {
+  /* Estilos para contenedores principales */
+  .container,
+  .grid,
+  .calculator-card,
+  .formula-card,
+  .result-card,
+  .search-container,
+  .nav-tabs,
+  table,
+  #cashFlowCanvas,
+  nav.bg-white.shadow-md.sticky.top-0.z-50,
+  footer {
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
-    box-sizing: border-box !important; /* box-sizing aplicado a TODOS LOS CONTENEDORES PRINCIPALES */
-    float: none !important; /* Asegurar que no haya floats que interfieran */
-    position: relative !important; /* Posición relativa por defecto, evitar posicionamiento absoluto/fijo inesperado */
-    left: 0 !important;       /* Asegurar que empiecen en el borde izquierdo */
-    right: 0 !important;      /* Asegurar que se extiendan hasta el borde derecho */
-    display: block !important; /* Forzar display block para ocupar todo el ancho disponible */
+    box-sizing: border-box !important;
+    float: none !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: block !important;
   }
-
 
   body {
     font-size: 0.9rem;
   }
 
-
-  body .container.mx-auto.px-4 { /* Contenedor interno del footer y nav - REVISADO, MENOS ESPECÍFICO */
+  body .container.mx-auto.px-4 { /* Contenedor interno footer/nav */
     padding-left: 1rem !important;
     padding-right: 1rem !important;
-    box-sizing: border-box !important; /* box-sizing también aquí */
-    max-width: 100% !important; /* Asegurar que no haya max-width limitante */
-    width: auto !important;      /* Dejar que el ancho se ajuste al 100% del contenedor padre */
-    margin: 0 auto !important;   /* Centrar horizontalmente si es necesario, pero no limitar ancho */
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    width: auto !important;
+    margin: 0 auto !important;
   }
 
-   body .nav-tabs { /* Estilos para .nav-tabs REVISADOS y SIMPLIFICADOS */
-    display: flex !important; /* Forzar flexbox para la barra de navegación */
-    width: 100% !important;    /* Ocupar 100% del ancho disponible */
-    max-width: 100% !important; /* Asegurar que no haya max-width limitante */
+   body .nav-tabs { /* Estilos para .nav-tabs */
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding-left: 0 !important;  /* Resetear padding si es necesario */
-    padding-right: 0 !important; /* Resetear padding si es necesario */
-    box-sizing: border-box !important; /* box-sizing también aquí */
-    overflow-x: auto !important;   /* Permitir scroll horizontal si el contenido excede el ancho (para pestañas, etc.) */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
   }
 
-
-  body  .absolute.inset-0.bg-grid-pattern.opacity-10 { /* Background pattern - REVISADO, MENOS ESPECÍFICO */
+  body  .absolute.inset-0.bg-grid-pattern.opacity-10 { /* Background pattern */
     width: 100% !important;
     max-width: 100% !important;
     left: 0 !important;
     right: 0 !important;
-    box-sizing: border-box !important; /* box-sizing también aquí */
+    box-sizing: border-box !important;
   }
 }
 

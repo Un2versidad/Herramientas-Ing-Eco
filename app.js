@@ -17,6 +17,14 @@ let cashFlows = [{
     amount: 40000
 }];
 
+document.body.style.overflow = 'hidden';
+document.body.addEventListener('wheel', (event) => {
+    window.scrollBy({
+        top: event.deltaY,
+        behavior: 'smooth'
+    });
+});
+
 // Inicialización cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {
     // Seleccionar elementos relevantes

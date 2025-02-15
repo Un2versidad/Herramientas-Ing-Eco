@@ -85,13 +85,17 @@ body {
     overflow-x: auto;
   }
 
-  .calculator-card,
-  .formula-card,
-  .result-card,
-  .search-container,
-  .nav-tabs,
-  table,
-  #cashFlowCanvas {
+  html, body {
+    width: 100%;
+  }
+
+  body .calculator-card,
+  body .formula-card,
+  body .result-card,
+  body .search-container,
+  body .nav-tabs,
+  body table,
+  body #cashFlowCanvas {
     width: 100%;
     max-width: 100%;
     margin-left: 0;
@@ -100,7 +104,7 @@ body {
     padding-right: 1rem;
   }
 
-  .grid {
+  body .grid {
     width: 100%;
     grid-template-columns: 1fr;
   }
@@ -110,29 +114,331 @@ body {
   }
 
   /* Asegurar que el footer ocupe el 100% del ancho en horizontal móvil */
-  footer {
+  body footer {
     width: 100%;
-    max-width: 100%; /* Por si acaso tiene un max-width que lo limite */
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 1rem; /* Añade padding horizontal si lo deseas, ajusta el valor */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
   /* Asegurar que el background pattern ocupe el 100% del ancho */
-  .absolute.inset-0.bg-grid-pattern.opacity-10 { /* Selector específico para este div */
+  body .absolute.inset-0.bg-grid-pattern.opacity-10 {
     width: 100%;
-    max-width: 100%; /* Por si acaso */
-    left: 0; /* Asegurar que empiece en el borde izquierdo */
-    right: 0; /* Asegurar que se extienda hasta el borde derecho */
+    max-width: 100%;
+    left: 0;
+    right: 0;
   }
 
-  .container.mx-auto.px-4 { /* Contenedor interno del footer, por si acaso */
+  body .container.mx-auto.px-4 {
     width: 100%;
-    max-width: 100%; /* Asegurar que el contenedor interno no limite el footer */
-    padding-left: 1rem; /* Ajusta el padding para el contenido interno del footer */
+    max-width: 100%;
+    padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  /* Asegurar que el nav ocupe el 100% del ancho en horizontal móvil */
+  body nav.bg-white.shadow-md.sticky.top-0.z-50 { /* Selector específico para el nav */
+    width: 100%;
+    max-width: 100%; /* Por si acaso tiene un max-width que lo limite */
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Asegurar que el contenedor interno del nav ocupe el 100% del ancho */
+  body nav.bg-white.shadow-md.sticky.top-0.z-50 > .container.mx-auto.px-4 { /* Selector más específico */
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem; /* Añade padding horizontal si lo deseas, ajusta el valor */
+    padding-right: 1rem;
+  }
+
+    /* For good measure, target nav-tabs in case it's contributing */
+  body .nav-tabs {
+    width: 100%; /* Ensure nav-tabs container takes full width */
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0; /* Reset padding if needed */
+    padding-right: 0;
+  }
+}
+
+.animate-fadeInUp {
+	animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInRight {
+	animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+	animation: pulse 2s infinite;
+}
+
+/* Toast Notifications */
+.toast {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 1.5rem;
+	padding: 0.8rem 1.2rem;
+	border-radius: 0.4rem;
+	background: white;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+	animation: slideInRight 0.3s ease-out;
+	z-index: 50;
+	font-size: 0.75rem;
+}
+
+.toast-success {
+	border-left: 3px solid var(--success);
+}
+
+.toast-error {
+	border-left: 3px solid var(--danger);
+}
+
+/* Navigation */
+.nav-tabs {
+	display: flex;
+	gap: 0.8rem;
+	border-bottom: 2px solid #e5e7eb;
+}
+
+.nav-tab {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.6rem 0.8rem;
+	color: #6b7280;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -2px;
+	transition: all 0.2s;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 0.8rem;
+}
+
+.nav-tab:hover {
+	color: var(--primary);
+}
+
+.nav-tab.active {
+	color: var(--primary);
+	border-bottom-color: var(--primary);
+}
+
+/* Forms */
+.form-input {
+	width: 100%;
+	padding: 0.6rem;
+	border: 1px solid #d1d5db;
+	border-radius: 0.4rem;
+	font-size: 0.75rem;
+	transition: all 0.3s ease;
+}
+
+.form-input:focus {
+	outline: none;
+	border-color: var(--primary);
+	box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+	transform: translateY(-1px);
+}
+
+/* Buttons */
+.btn-primary {
+	background-color: var(--primary);
+	color: white;
+	padding: 0.6rem 1.2rem;
+	border-radius: 0.4rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	font-size: 0.8rem;
+}
+
+.btn-primary:hover {
+	background-color: var(--primary-dark);
+	transform: translateY(-1px);
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+	transform: translateY(0);
+}
+
+/* Cards */
+.calculator-card {
+	background-color: white;
+	border-radius: 0.8rem;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+	padding: 1.2rem;
+	transition: all 0.3s ease;
+	animation: fadeInUp 0.6s ease-out;
+}
+
+.calculator-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Results */
+.result-card {
+	background-color: #f8fafc;
+	border-radius: 0.6rem;
+	padding: 0.8rem;
+	transition: all 0.3s ease;
+}
+
+.result-card:hover {
+	background-color: #f1f5f9;
+	transform: translateY(-1px);
+}
+
+/* Tables */
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+th {
+	background-color: #f8fafc;
+	padding: 0.8rem;
+	font-weight: 600;
+	color: #1f2937;
+	border-bottom: 2px solid #e5e7eb;
+	font-size: 0.75rem;
+}
+
+td {
+	padding: 0.8rem;
+	border-bottom: 1px solid #e5e7eb;
+	transition: background-color 0.2s;
+	font-size: 0.75rem;
+}
+
+tr:hover td {
+	background-color: #f8fafc;
+}
+
+/* Search */
+.search-container {
+	position: relative;
+	max-width: 32rem;
+	margin: 0 auto;
+}
+
+.search-input {
+	width: 100%;
+	padding: 0.6rem 0.8rem 0.6rem 2.2rem;
+	border: 1px solid #d1d5db;
+	border-radius: 0.6rem;
+	font-size: 0.75rem;
+	transition: all 0.3s ease;
+}
+
+.search-input:focus {
+	border-color: var(--primary);
+	box-shadow: 0 3px 5px -1px rgba(37, 99, 235, 0.1);
+	transform: scale(1.01);
+}
+
+.search-icon {
+	position: absolute;
+	left: 0.6rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #9ca3af;
+	pointer-events: none;
+	font-size: 0.75rem;
+}
+
+/* Formula cards */
+.formula-card {
+	background-color: white;
+	border-radius: 0.8rem;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+	padding: 1.2rem;
+	transition: all 0.3s ease;
+	animation: slideInRight 0.6s ease-out;
+}
+
+.formula-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+.formula-title {
+	color: var(--primary);
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 0.8rem;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.formula-content {
+	font-size: 0.75rem;
+	color: #4b5563;
+}
+
+/* Canvas */
+#cashFlowCanvas {
+	border-radius: 0.6rem;
+	transition: all 0.3s ease;
+	background-color: white;
+}
+
+#cashFlowCanvas:hover {
+	box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	.nav-tabs {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.calculator-card {
+		padding: 1rem;
+	}
+}
+
+/* Loading states */
+.loading {
+	position: relative;
+	overflow: hidden;
+}
+
+.loading::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: linear-gradient(90deg,
+			rgba(255, 255, 255, 0) 0%,
+			rgba(255, 255, 255, 0.2) 50%,
+			rgba(255, 255, 255, 0) 100%);
+	animation: shimmer 1.5s infinite;
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+	background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+	background-size: 20px 20px;
+	animation: moveBackground 20s linear infinite;
 }
 
 .animate-fadeInUp {

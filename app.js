@@ -25,7 +25,10 @@ function esDispositivoMovil() {
 }
 
 if (!esDispositivoMovil()) {
-    // Aplicar el desplazamiento personalizado SOLO si NO es un dispositivo móvil (asumiendo que es escritorio)
+    // Aplicar el desplazamiento personalizado y ZOOM SOLO si NO es un dispositivo móvil (asumiendo que es escritorio)
+
+    // Aplicar zoom para escritorio
+    document.documentElement.style.zoom = '0.85';
 
     // Desactivar el desplazamiento predeterminado (SOLO si NO es dispositivo móvil)
     document.body.style.overflow = 'hidden';
@@ -44,7 +47,7 @@ if (!esDispositivoMovil()) {
         });
     }, { passive: false });
 
-    // Manejar el desplazamiento táctil (móvil) - SOLO si NO es dispositivo móvil
+    // Manejar el desplazamiento táctil (móvil) - SOLO si NO es dispositivo móvil (ESTO NO SE EJECUTARÁ EN MÓVILES AHORA)
     document.body.addEventListener('touchstart', (event) => {
         if (event.touches.length === 1) {
             startY = event.touches[0].clientY; // Guardar la posición inicial del toque
@@ -73,7 +76,9 @@ if (!esDispositivoMovil()) {
 } else {
     // Dejar el desplazamiento predeterminado para dispositivos móviles (Android, iOS, etc.)
     console.log("Desplazamiento predeterminado habilitado para dispositivo móvil.");
-    // No se necesita hacer nada aquí, ya que por defecto los dispositivos móviles usarán su desplazamiento nativo
+    // Asegurar que no haya zoom en móviles (establecer zoom a 1)
+    document.documentElement.style.zoom = '1';
+    // No se necesita hacer nada más aquí para el desplazamiento, ya que es el nativo del móvil
 }
 
 // Inicialización cuando el DOM está listo

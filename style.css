@@ -81,12 +81,12 @@ body {
 
 @media (max-width: 768px) and (orientation: landscape) {
   body {
-    width: 100%;
+    width: 100% !important;
     overflow-x: auto;
   }
 
   html, body {
-    width: 100%;
+    width: 100% !important;
   }
 
   body .calculator-card,
@@ -96,72 +96,78 @@ body {
   body .nav-tabs,
   body table,
   body #cashFlowCanvas {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0;
     margin-right: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box; /* Añadido box-sizing para asegurar que el padding se incluye en el ancho */
   }
 
   body .grid {
-    width: 100%;
+    width: 100% !important;
     grid-template-columns: 1fr;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
   body {
     font-size: 0.9rem;
+    box-sizing: border-box; /* Añadido box-sizing al body también */
   }
 
   /* Asegurar que el footer ocupe el 100% del ancho en horizontal móvil */
   body footer {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0;
     margin-right: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
   /* Asegurar que el background pattern ocupe el 100% del ancho */
   body .absolute.inset-0.bg-grid-pattern.opacity-10 {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     left: 0;
     right: 0;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
   body .container.mx-auto.px-4 {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
-  /* Asegurar que el nav ocupe el 100% del ancho en horizontal móvil */
-  body nav.bg-white.shadow-md.sticky.top-0.z-50 { /* Selector específico para el nav */
-    width: 100%;
-    max-width: 100%; /* Por si acaso tiene un max-width que lo limite */
+  body nav.bg-white.shadow-md.sticky.top-0.z-50 {
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0;
     margin-right: 0;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
-  /* Asegurar que el contenedor interno del nav ocupe el 100% del ancho */
-  body nav.bg-white.shadow-md.sticky.top-0.z-50 > .container.mx-auto.px-4 { /* Selector más específico */
-    width: 100%;
-    max-width: 100%;
-    padding-left: 1rem; /* Añade padding horizontal si lo deseas, ajusta el valor */
+  body nav.bg-white.shadow-md.sticky.top-0.z-50 > .container.mx-auto.px-4 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 
-    /* For good measure, target nav-tabs in case it's contributing */
   body .nav-tabs {
-    width: 100%; /* Ensure nav-tabs container takes full width */
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 0; /* Reset padding if needed */
+    padding-left: 0;
     padding-right: 0;
+    box-sizing: border-box; /* Añadido box-sizing */
   }
 }
 

@@ -7,6 +7,10 @@
 	--warning: #d97706;
 }
 
+html {
+    zoom: 0.90;
+}
+
 /* Base styles */
 body {
 	font-family: 'Inter', system-ui, -apple-system, sans-serif;

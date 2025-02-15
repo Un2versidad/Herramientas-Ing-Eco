@@ -17,49 +17,64 @@ let cashFlows = [{
     amount: 40000
 }];
 
-// Desactivar el desplazamiento predeterminado
-document.body.style.overflow = 'hidden';
 
-// Variables para el seguimiento del desplazamiento táctil
-let startY = 0;
-let currentY = 0;
-let isScrolling = false;
+// Función para detectar si es un dispositivo móvil
+function esDispositivoMovil() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    return userAgent.includes('android') || userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mobile');
+}
 
-// Manejar el desplazamiento con la rueda del mouse (escritorio)
-document.body.addEventListener('wheel', (event) => {
-    event.preventDefault(); // Prevenir el desplazamiento predeterminado
-    window.scrollBy({
-        top: event.deltaY,
-        behavior: 'smooth'
-    });
-}, { passive: false });
+if (!esDispositivoMovil()) {
+    // Aplicar el desplazamiento personalizado SOLO si NO es un dispositivo móvil (asumiendo que es escritorio)
 
-// Manejar el desplazamiento táctil (móvil)
-document.body.addEventListener('touchstart', (event) => {
-    if (event.touches.length === 1) {
-        startY = event.touches[0].clientY; // Guardar la posición inicial del toque
-        isScrolling = true;
-    }
-});
+    // Desactivar el desplazamiento predeterminado (SOLO si NO es dispositivo móvil)
+    document.body.style.overflow = 'hidden';
 
-document.body.addEventListener('touchmove', (event) => {
-    if (!isScrolling || event.touches.length !== 1) return;
+    // Variables para el seguimiento del desplazamiento táctil
+    let startY = 0;
+    let currentY = 0;
+    let isScrolling = false;
 
-    event.preventDefault(); // Prevenir el desplazamiento predeterminado
-    currentY = event.touches[0].clientY; // Obtener la posición actual del toque
-    const deltaY = currentY - startY; // Calcular la diferencia de desplazamiento
+    // Manejar el desplazamiento con la rueda del mouse (escritorio) - SOLO si NO es dispositivo móvil
+    document.body.addEventListener('wheel', (event) => {
+        event.preventDefault(); // Prevenir el desplazamiento predeterminado
+        window.scrollBy({
+            top: event.deltaY,
+            behavior: 'smooth'
+        });
+    }, { passive: false });
 
-    window.scrollBy({
-        top: -deltaY, // Desplazar en la dirección opuesta al movimiento táctil
-        behavior: 'smooth'
+    // Manejar el desplazamiento táctil (móvil) - SOLO si NO es dispositivo móvil
+    document.body.addEventListener('touchstart', (event) => {
+        if (event.touches.length === 1) {
+            startY = event.touches[0].clientY; // Guardar la posición inicial del toque
+            isScrolling = true;
+        }
     });
 
-    startY = currentY; // Actualizar la posición inicial para el próximo cálculo
-}, { passive: false });
+    document.body.addEventListener('touchmove', (event) => {
+        if (!isScrolling || event.touches.length !== 1) return;
 
-document.body.addEventListener('touchend', () => {
-    isScrolling = false; // Finalizar el seguimiento del desplazamiento táctil
-});
+        event.preventDefault(); // Prevenir el desplazamiento predeterminado
+        currentY = event.touches[0].clientY; // Obtener la posición actual del toque
+        const deltaY = currentY - startY; // Calcular la diferencia de desplazamiento
+
+        window.scrollBy({
+            top: -deltaY, // Desplazar en la dirección opuesta al movimiento táctil
+            behavior: 'smooth'
+        });
+
+        startY = currentY; // Actualizar la posición inicial para el próximo cálculo
+    }, { passive: false });
+
+    document.body.addEventListener('touchend', () => {
+        isScrolling = false; // Finalizar el seguimiento del desplazamiento táctil
+    });
+} else {
+    // Dejar el desplazamiento predeterminado para dispositivos móviles (Android, iOS, etc.)
+    console.log("Desplazamiento predeterminado habilitado para dispositivo móvil.");
+    // No se necesita hacer nada aquí, ya que por defecto los dispositivos móviles usarán su desplazamiento nativo
+}
 
 // Inicialización cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {
@@ -135,6 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar actualizador para copyright
     actualizarCopyright();
+
+    // Inicializar comprobador
+	esDispositivoMovil()
 });
 
 const showToast = (message, type = 'success') => {

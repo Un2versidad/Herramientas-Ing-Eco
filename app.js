@@ -25,29 +25,32 @@ function esDispositivoMovil() {
 }
 
 if (!esDispositivoMovil()) {
-    // Aplicar el desplazamiento personalizado y ZOOM SOLO si NO es un dispositivo móvil (asumiendo que es escritorio)
-
     // Aplicar zoom para escritorio
     document.documentElement.style.zoom = '0.85';
-
+    
     // Desactivar el desplazamiento predeterminado (SOLO si NO es dispositivo móvil)
     document.body.style.overflow = 'hidden';
+
+    // Factor de velocidad para el desplazamiento (ajustable)
+    const scrollSpeed = 1.5; // Aumenta este valor para hacer el scroll más rápido
+
+    // Manejar el desplazamiento con la rueda del mouse (escritorio)
+    document.body.addEventListener('wheel', (event) => {
+        event.preventDefault(); // Prevenir el desplazamiento predeterminado
+        
+        // Multiplicar event.deltaY por el factor de velocidad
+        window.scrollBy({
+            top: event.deltaY * scrollSpeed,
+            behavior: 'smooth'
+        });
+    }, { passive: false });
 
     // Variables para el seguimiento del desplazamiento táctil
     let startY = 0;
     let currentY = 0;
     let isScrolling = false;
 
-    // Manejar el desplazamiento con la rueda del mouse (escritorio) - SOLO si NO es dispositivo móvil
-    document.body.addEventListener('wheel', (event) => {
-        event.preventDefault(); // Prevenir el desplazamiento predeterminado
-        window.scrollBy({
-            top: event.deltaY,
-            behavior: 'smooth'
-        });
-    }, { passive: false });
-
-    // Manejar el desplazamiento táctil (móvil) - SOLO si NO es dispositivo móvil (ESTO NO SE EJECUTARÁ EN MÓVILES AHORA)
+    // Manejar el desplazamiento táctil (móvil)
     document.body.addEventListener('touchstart', (event) => {
         if (event.touches.length === 1) {
             startY = event.touches[0].clientY; // Guardar la posición inicial del toque
@@ -57,16 +60,17 @@ if (!esDispositivoMovil()) {
 
     document.body.addEventListener('touchmove', (event) => {
         if (!isScrolling || event.touches.length !== 1) return;
-
         event.preventDefault(); // Prevenir el desplazamiento predeterminado
+        
         currentY = event.touches[0].clientY; // Obtener la posición actual del toque
         const deltaY = currentY - startY; // Calcular la diferencia de desplazamiento
-
+        
+        // Multiplicar la diferencia por el factor de velocidad
         window.scrollBy({
-            top: -deltaY, // Desplazar en la dirección opuesta al movimiento táctil
+            top: -deltaY * scrollSpeed, // Desplazar en la dirección opuesta al movimiento táctil
             behavior: 'smooth'
         });
-
+        
         startY = currentY; // Actualizar la posición inicial para el próximo cálculo
     }, { passive: false });
 
@@ -76,9 +80,9 @@ if (!esDispositivoMovil()) {
 } else {
     // Dejar el desplazamiento predeterminado para dispositivos móviles (Android, iOS, etc.)
     console.log("Desplazamiento predeterminado habilitado para dispositivo móvil.");
+    
     // Asegurar que no haya zoom en móviles (establecer zoom a 1)
     document.documentElement.style.zoom = '1';
-    // No se necesita hacer nada más aquí para el desplazamiento, ya que es el nativo del móvil
 }
 
 // Inicialización cuando el DOM está listo

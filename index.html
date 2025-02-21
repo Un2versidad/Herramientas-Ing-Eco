@@ -63,10 +63,10 @@
       </div>
     </header>
     <!-- Barra de navegación -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="bg-white shadow-md sticky top-0 z-50">
       <div class="container mx-auto px-4">
         <!-- Menú Principal (Visible en Pantallas Grandes) -->
-        <div class="hidden md:flex justify-between items-center py-4 gap-6 nav-tabs" role="tablist">
+        <div class="desktop-menu nav-tabs" role="tablist">
           <!-- Calculadoras -->
           <button class="nav-tab active" data-tab="calculadoras" role="tab" aria-label="Calculadoras">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@
             </svg> Interpretación </button>
         </div>
         <!-- Botón de Hamburguesa (Visible en Pantallas Pequeñas) -->
-        <div class="md:hidden flex justify-between items-center py-4">
+        <div class="mobile-toggle flex justify-between items-center py-4">
           <button id="menu-toggle" class="text-gray-600 hover:text-gray-900 focus:outline-none" aria-label="Toggle menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -112,7 +112,7 @@
           </button>
         </div>
         <!-- Menú Desplegable (Oculto por Defecto) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mt-2">
+        <div id="mobile-menu" class="mobile-menu bg-white shadow-lg rounded-lg mt-2">
           <ul class="divide-y divide-gray-200">
             <li>
               <button class="nav-tab-mobile w-full text-left px-4 py-3 hover:bg-gray-100" data-tab="calculadoras" aria-label="Calculadoras">
@@ -1169,21 +1169,27 @@
         </div>
       </div>
     </footer>
-    <script>
-      // Manejo de pestañas
-      document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          // Remover clase active de todas las pestañas
-          document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-          // Agregar clase active a la pestaña seleccionada
-          tab.classList.add('active');
-          // Ocultar todos los contenidos
-          document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-          // Mostrar el contenido seleccionado
-          document.getElementById(tab.dataset.tab).classList.remove('hidden');
-        });
-      });
-    </script>
+<script>
+  // Manejo de pestañas (sin cambios)
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+      document.getElementById(tab.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+  // Manejo del menú móvil
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+  });
+</script>
     <script src="app.js"></script>
   </body>
 </html>

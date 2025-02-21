@@ -1109,6 +1109,135 @@
               <p class="text-sm text-gray-600 mt-2">Caso de uso: Valuar flujos perpetuos con crecimiento constante (ej. dividendos crecientes).</p>
             </div>
           </div>
+          <!-- Factores de Conversión Básicos (desde la imagen) -->
+          <!-- F/P (Valor Futuro dado Valor Presente) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-arrow-up mr-2 text-xl"></i> F/P (Valor Futuro dado P)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ F = P \cdot (1 + i)^n \] <p class="mb-4">Despejes:</p> \[ P = \frac{F}{(1 + i)^n} \] \[ i = \left( \frac{F}{P} \right)^{\frac{1}{n}} - 1 \] \[ n = \frac{\ln\left(\frac{F}{P}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>F = Valor futuro</li>
+                <li>P = Valor presente</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el valor futuro (F) dado un valor presente (P).</p>
+            </div>
+          </div>
+          <!-- P/F (Valor Presente dado Valor Futuro) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-arrow-down mr-2 text-xl"></i> P/F (Valor Presente dado F)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ P = F \cdot \frac{1}{(1 + i)^n} \] <p class="mb-4">Despejes:</p> \[ F = P \cdot (1 + i)^n \] \[ i = \left( \frac{F}{P} \right)^{\frac{1}{n}} - 1 \] \[ n = \frac{\ln\left(\frac{F}{P}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>P = Valor presente</li>
+                <li>F = Valor futuro</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el valor presente (P) dado un valor futuro (F).</p>
+            </div>
+          </div>
+          <!-- A/F (Anualidad dado Valor Futuro) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-calendar-check mr-2 text-xl"></i> A/F (Anualidad dado F)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ A = F \cdot \frac{i}{(1 + i)^n - 1} \] <p class="mb-4">Despejes:</p> \[ F = A \cdot \frac{(1 + i)^n - 1}{i} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \frac{\ln\left(1 + \frac{A}{F \cdot i}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>A = Anualidad</li>
+                <li>F = Valor futuro</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el pago uniforme (A) necesario para alcanzar un valor futuro (F).</p>
+            </div>
+          </div>
+          <!-- F/A (Valor Futuro dado Anualidad) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-chart-line mr-2 text-xl"></i> F/A (Valor Futuro dado A)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ F = A \cdot \frac{(1 + i)^n - 1}{i} \] <p class="mb-4">Despejes:</p> \[ A = F \cdot \frac{i}{(1 + i)^n - 1} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \frac{\ln\left(1 + \frac{F \cdot i}{A}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>F = Valor futuro</li>
+                <li>A = Anualidad</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el valor futuro (F) dado un pago uniforme (A).</p>
+            </div>
+          </div>
+          <!-- A/P (Anualidad dado Valor Presente) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-calendar-alt mr-2 text-xl"></i> A/P (Anualidad dado P)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ A = P \cdot \frac{i (1 + i)^n}{(1 + i)^n - 1} \] <p class="mb-4">Despejes:</p> \[ P = A \cdot \frac{(1 + i)^n - 1}{i (1 + i)^n} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \frac{\ln\left(\frac{A}{A - P \cdot i}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>A = Anualidad</li>
+                <li>P = Valor presente</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el pago uniforme (A) necesario para amortizar un valor presente (P).</p>
+            </div>
+          </div>
+          <!-- P/A (Valor Presente dado Anualidad) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-coins mr-2 text-xl"></i> P/A (Valor Presente dado A)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ P = A \cdot \frac{(1 + i)^n - 1}{i (1 + i)^n} \] <p class="mb-4">Despejes:</p> \[ A = P \cdot \frac{i (1 + i)^n}{(1 + i)^n - 1} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \frac{\ln\left(\frac{A}{A - P \cdot i}\right)}{\ln(1 + i)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>P = Valor presente</li>
+                <li>A = Anualidad</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el valor presente (P) dado un pago uniforme (A).</p>
+            </div>
+          </div>
+          <!-- P/G (Valor Presente dado Gradiente) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-arrow-trend-up mr-2 text-xl"></i> P/G (Valor Presente dado G)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ P = G \cdot \frac{(1 + i)^n - i \cdot n - 1}{i^2 (1 + i)^n} \] <p class="mb-4">Despejes:</p> \[ G = P \cdot \frac{i^2 (1 + i)^n}{(1 + i)^n - i \cdot n - 1} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \text{(requiere solución numérica)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>P = Valor presente</li>
+                <li>G = Gradiente (incremento uniforme)</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el valor presente (P) dado un gradiente aritmético (G).</p>
+            </div>
+          </div>
+          <!-- A/G (Anualidad dado Gradiente) -->
+          <div class="formula-card">
+            <h3 class="formula-title flex items-center">
+              <i class="fas fa-exchange-alt mr-2 text-xl"></i> A/G (Anualidad dado G)
+            </h3>
+            <div class="formula-content">
+              <p class="mb-4">Fórmula:</p> \[ A = G \cdot \left( \frac{1}{i} - \frac{n}{(1 + i)^n - 1} \right) \] <p class="mb-4">Despejes:</p> \[ G = A \cdot \frac{1}{\left( \frac{1}{i} - \frac{n}{(1 + i)^n - 1} \right)} \] \[ i = \text{(requiere solución numérica)} \] \[ n = \text{(requiere solución numérica)} \] <p class="text-sm text-gray-600">Donde:</p>
+              <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>A = Anualidad equivalente</li>
+                <li>G = Gradiente (incremento uniforme)</li>
+                <li>i = Tasa de interés por período</li>
+                <li>n = Número de períodos</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Caso de uso: Calcular el pago uniforme equivalente (A) dado un gradiente aritmético (G).</p>
+            </div>
+          </div>
         </div>
       </section>
       <!-- Sección: Comparación de Alternativas -->

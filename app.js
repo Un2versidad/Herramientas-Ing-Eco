@@ -165,6 +165,7 @@ const EventHandlers = {
             console.log('Mobile scroll enabled');
         }
     },
+    
     setupDOM: () => {
         document.addEventListener('DOMContentLoaded', () => {
             const navTabs = document.querySelectorAll('.nav-tab, .nav-tab-mobile');

@@ -17,6 +17,48 @@ body {
     background-color: #f3f4f6;
     font-size: 0.9rem;
     margin: 0;
+    overflow-y: auto;
+}
+
+/* Scroll Totalmente Invisible */
+html, body {
+    scrollbar-width: none; /* Firefox: elimina el scroll completamente */
+    -ms-overflow-style: none; /* IE y Edge: elimina el scroll */
+}
+
+::-webkit-scrollbar {
+    width: 0; /* Webkit: ancho cero para hacerlo invisible */
+    height: 0;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Track transparente */
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent; /* Thumb transparente */
+}
+
+/* Ajuste para secciones con overflow */
+.tab-content, .overflow-x-auto {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+}
+
+.tab-content::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.tab-content::-webkit-scrollbar-track,
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tab-content::-webkit-scrollbar-thumb,
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 /* Animations */
@@ -79,12 +121,12 @@ body {
 
 /* Desktop menu */
 .desktop-menu {
-    display: none; /* Oculto por defecto en móvil */
+    display: none;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem; /* py-4 */
+    padding-top: 1rem;
     padding-bottom: 1rem;
-    gap: 1.5rem; /* gap-6 */
+    gap: 1.5rem;
 }
 
 .nav-tab {
@@ -107,7 +149,7 @@ body {
 
 /* Mobile toggle */
 .mobile-toggle {
-    display: block; /* Visible por defecto en móvil */
+    display: block;
     justify-content: space-between;
     align-items: center;
     padding-top: 1rem;
@@ -131,7 +173,7 @@ body {
 
 /* Mobile menu */
 .mobile-menu {
-    display: none; /* Oculto por defecto */
+    display: none;
     background-color: white;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
@@ -139,7 +181,7 @@ body {
 }
 
 .mobile-menu.active {
-    display: block; /* Visible cuando activo */
+    display: block;
 }
 
 .nav-tab-mobile {
@@ -163,25 +205,25 @@ body {
 /* Media Queries */
 @media (max-width: 968px) {
     .desktop-menu {
-        display: none !important; /* Asegura que el menú escritorio esté oculto en móvil */
+        display: none !important;
     }
     .mobile-toggle {
-        display: block; /* Botón hamburguesa visible hasta 968px */
+        display: block;
     }
     .mobile-menu.active {
-        display: block; /* Menú móvil visible cuando activo */
+        display: block;
     }
 }
 
 @media (min-width: 969px) {
     .desktop-menu {
-        display: flex !important; /* Menú escritorio visible desde 969px */
+        display: flex !important;
     }
     .mobile-toggle {
-        display: none !important; /* Botón hamburguesa oculto desde 969px */
+        display: none !important;
     }
     .mobile-menu {
-        display: none !important; /* Menú móvil oculto desde 969px */
+        display: none !important;
     }
 }
 

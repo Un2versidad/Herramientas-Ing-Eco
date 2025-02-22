@@ -92,80 +92,16 @@ const UI = {
 
 // Event Handlers
 const EventHandlers = {
-    setupScroll: () => {
+    
+	setupScroll: () => {
         if (!Utils.isMobile()) {
-            document.documentElement.style.zoom = CONSTANTS.DESKTOP_ZOOM;
-            document.body.style.overflow = 'hidden';
-
-            let startY = 0,
-                isScrolling = false;
-            let smoothingFactor = 1; // Factor inicial de suavizado
-            let lastDelta = 0,
-                lastTime = 0;
-
-            // Función para ajustar dinámicamente el factor de suavizado
-            const adjustSmoothing = (delta, timeDiff) => {
-                // Si el usuario desplaza rápido (timeDiff pequeño), reducimos la sensibilidad
-                if (timeDiff < 50 && Math.abs(delta) > 50) {
-                    smoothingFactor = Math.max(0.3, smoothingFactor * 0.9); // Más suave para dispositivos sensibles
-                } else if (Math.abs(delta) < 20) {
-                    smoothingFactor = Math.min(1.5, smoothingFactor * 1.1); // Más rápido para dispositivos lentos
-                }
-            };
-
-            // Manejo del scroll con rueda del mouse o touchpad
-            document.body.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const currentTime = performance.now();
-                const timeDiff = currentTime - lastTime;
-                const delta = e.deltaY * smoothingFactor;
-
-                // Ajustar el factor dinámicamente
-                adjustSmoothing(e.deltaY, timeDiff);
-
-                window.scrollBy({
-                    top: delta,
-                    behavior: 'smooth'
-                });
-
-                lastDelta = e.deltaY;
-                lastTime = currentTime;
-            }, {
-                passive: false
-            });
-
-            // Inicio del toque en pantallas táctiles
-            document.body.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) {
-                    startY = e.touches[0].clientY;
-                    isScrolling = true;
-                }
-            });
-
-            // Movimiento del toque
-            document.body.addEventListener('touchmove', (e) => {
-                if (!isScrolling || e.touches.length !== 1) return;
-                e.preventDefault();
-                const currentY = e.touches[0].clientY;
-                const delta = -(currentY - startY) * smoothingFactor;
-
-                window.scrollBy({
-                    top: delta,
-                    behavior: 'smooth'
-                });
-                startY = currentY;
-            }, {
-                passive: false
-            });
-
-            // Fin del toque
-            document.body.addEventListener('touchend', () => isScrolling = false);
+            document.documentElement.style.zoom = CONSTANTS.DESKTOP_ZOOM; // Zoom a 0.85 en escritorio
         } else {
-            document.documentElement.style.zoom = CONSTANTS.MOBILE_ZOOM;
-            console.log('Mobile scroll enabled');
+            document.documentElement.style.zoom = CONSTANTS.MOBILE_ZOOM; // Zoom a 1 en móvil
+            console.log('Mobile zoom enabled');
         }
     },
-    
+	
     setupDOM: () => {
         document.addEventListener('DOMContentLoaded', () => {
             const navTabs = document.querySelectorAll('.nav-tab, .nav-tab-mobile');

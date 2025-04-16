@@ -5,7 +5,9 @@ const CONSTANTS = {
     TOAST_DURATION: 3000,
     MOBILE_ZOOM: '1',
     DESKTOP_ZOOM: '0.85',
-    MAX_AMOUNT: 1e9 // Límite máximo de monto: 1 billón USD
+    MAX_AMOUNT: 1e9, // Límite máximo de monto: 1 billón USD
+    TF_EPOCHS: 100,
+    TF_LEARNING_RATE: 0.01
 };
 
 // Estado global
@@ -93,7 +95,7 @@ const UI = {
 // Event Handlers
 const EventHandlers = {
     
-	setupScroll: () => {
+    setupScroll: () => {
         if (!Utils.isMobile()) {
             document.documentElement.style.zoom = CONSTANTS.DESKTOP_ZOOM; // Zoom a 0.85 en escritorio
         } else {
@@ -101,7 +103,7 @@ const EventHandlers = {
             console.log('Mobile zoom enabled');
         }
     },
-	
+    
     setupDOM: () => {
         document.addEventListener('DOMContentLoaded', () => {
             const navTabs = document.querySelectorAll('.nav-tab, .nav-tab-mobile');
@@ -140,12 +142,62 @@ const EventHandlers = {
                     card.style.display = title.includes(term) ? '' : 'none';
                 });
             });
-        });
+        })
     }
 };
 
 // Financial Calculations
 const Calculations = {
+    entrenarModeloSensibilidad: async (puntos) => {
+        try {
+            // Convertir datos a tensores
+            const xs = tf.tensor1d(puntos.map(p => p.x));
+            const ys = tf.tensor1d(puntos.map(p => p.y));
+            
+            // Crear modelo secuencial
+            const model = tf.sequential();
+            model.add(tf.layers.dense({units: 10, activation: 'relu', inputShape: [1]}));
+            model.add(tf.layers.dense({units: 1}));
+            
+            // Compilar el modelo
+            model.compile({
+                optimizer: tf.train.adam(CONSTANTS.TF_LEARNING_RATE),
+                loss: 'meanSquaredError'
+            });
+            
+            // Entrenar el modelo
+            await model.fit(xs, ys, {
+                epochs: CONSTANTS.TF_EPOCHS,
+                verbose: 0
+            });
+            
+            return model;
+        } catch (error) {
+            console.error("Error entrenando modelo:", error);
+            return null;
+        }
+    },
+
+    generarPuntosSuavizados: async (model, minX, maxX, numPoints = 50) => {
+        if (!model) return [];
+        
+        try {
+            // Generar puntos equidistantes
+            const step = (maxX - minX) / (numPoints - 1);
+            const xValues = Array.from({length: numPoints}, (_, i) => minX + (i * step));
+            
+            // Predecir valores Y
+            const xs = tf.tensor1d(xValues);
+            const ys = await model.predict(xs).data();
+            tf.dispose(xs);
+            
+            return xValues.map((x, i) => ({x, y: ys[i]}));
+        } catch (error) {
+            console.error("Error generando puntos:", error);
+            return [];
+        }
+    },
+
     calcularFactores: () => {
         const tasa = Utils.getInputValue('tasa') / 100;
         const periodos = Utils.getInputValue('periodos', 'int');
@@ -349,7 +401,7 @@ const Calculations = {
         }
     },
 
-    analizarSensibilidad: () => {
+    analizarSensibilidad: async () => {
         const inversionInicial = Utils.getInputValue('sensInitialInv');
         const flujoBase = Utils.getInputValue('sensBaseFlow');
         const tasaBase = Utils.getInputValue('sensBaseRate') / 100;
@@ -360,21 +412,36 @@ const Calculations = {
             return;
         }
 
-        const puntos = [];
+        // Mostrar mensaje de carga
+        UI.showToast('Analizando sensibilidad...', 'info');
+
+        // Generar puntos base
+        const puntosBase = [];
         for (let i = -2; i <= 2; i++) {
             const flujo = flujoBase * (1 + i * variacion);
             const vpn = -inversionInicial + flujo * ((1 - Math.pow(1 + tasaBase, -10)) / tasaBase);
-            puntos.push({
+            puntosBase.push({
                 x: i,
                 y: vpn
             });
         }
+
+        // Entrenar modelo y generar puntos suavizados
+        const model = await Calculations.entrenarModeloSensibilidad(puntosBase);
+        const puntosSuavizados = await Calculations.generarPuntosSuavizados(model, -2, 2);
+        
+        // Limpiar memoria de TensorFlow
+        if (model) model.dispose();
+
+        // Usar los puntos suavizados si están disponibles, de lo contrario usar los puntos base
+        const puntosFinales = puntosSuavizados.length ? puntosSuavizados : puntosBase;
 
         const canvasElement = document.getElementById('sensitivityChart');
         if (!canvasElement) {
             UI.showToast('No se encontró el elemento del gráfico');
             return;
         }
+        
         const chartCtx = canvasElement.getContext('2d');
         if (!chartCtx) {
             UI.showToast('No se pudo obtener el contexto del gráfico');
@@ -388,15 +455,23 @@ const Calculations = {
         window.sensitivityChart = new Chart(chartCtx, {
             type: 'line',
             data: {
-                labels: puntos.map(p => p.x),
+                labels: puntosFinales.map(p => p.x.toFixed(1)),
                 datasets: [{
-                    label: 'VPN',
-                    data: puntos.map(p => p.y),
+                    label: 'VPN (Modelo)',
+                    data: puntosFinales.map(p => p.y),
                     borderColor: 'blue',
                     borderWidth: 2,
                     fill: false,
-                    pointBackgroundColor: 'blue',
-                    pointRadius: 4
+                    tension: 0.4 // Suaviza la curva
+                }, {
+                    label: 'VPN (Puntos base)',
+                    data: puntosBase.map(p => p.y),
+                    borderColor: 'orange',
+                    borderWidth: 0,
+                    pointBackgroundColor: 'orange',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    showLine: false
                 }]
             },
             options: {
@@ -422,7 +497,11 @@ const Calculations = {
                         position: 'top'
                     },
                     tooltip: {
-                        enabled: true
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${Utils.formatCurrency(context.raw)}`;
+                            }
+                        }
                     }
                 }
             }

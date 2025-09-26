@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cdc034e5-f0fb-48ec-a5d0-966d31cdcf6f)
+<img width="1882" height="528" alt="image" src="https://github.com/user-attachments/assets/9166711a-ac71-4196-a98f-d96071a6d497" />
 
 # ✨ Herramientas de Ingeniería Económica ✨
 

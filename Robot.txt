@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Sitemap: https://un2versidad.github.io/Herramientas-Ing-Eco/sitemap.xml
